@@ -6,110 +6,89 @@
 }
 body{
   margin: 0;
-  color: rgb(100,100,100);
 }
 #botaoAbrir{
   position: absolute;
-  border: none;
-  border-radius: 5px;
-  font-size: 20px;
 }
 
-
-#divBOTAOFECHAR{
-  width: 50px;
-  height: 50px;
-}
-
-#botaoFechar{
-  border-radius: 5px;
-  width: 25px;
-  height: 20px;
-  border: none;
-  margin-top: 3%;
-  border: 1px solid transparent;
-}
-
-#botaoFechar:hover{
-  background-color: red;
-  border: 1px solid rgb(107, 0, 0);
-}
-
-#nomeModal{
-  background-color: rgb(220,220,220, 0.5);
+#nome{
   height: 40px;
-  border: solid 2px rgb(100,100,100);
-  border-radius: 10px;
-  outline: none;
-  margin-left: 25px;
-  font-size: 14px;
 }
 
-#senhaModal{
-  background-color: rgb(220,220,220, 0.5);
+#sobrenome{
   height: 40px;
-  border: solid 2px rgb(100,100,100);
-  border-radius: 10px;
-  outline: none;
-  font-size: 14px;
 }
 
-#dataNascimento{
-  background-color: rgb(220,220,220, 0.5);
-  border: 2px solid rgba(100, 100, 100);
-  outline: none;
-  border-radius: 10px;
-  height: 43px;
-  margin-left: 5px;
-}
-
-#cadastro{
-  color:rgb(100,100,100);
-  background-color: rgb(220,220,220, 0.5);
-  height: 50px;
-  border: solid 2px rgb(100,100,100);
-  border-radius: 10px;
-  outline: none;
-  margin-left: 45%;
-  margin-top: 10px;
-}
-
-#cadastro:hover{
-  background-color:rgb(170,170,170);
+#erro{
+  font-weight: bold;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 200px;
+  margin-left: 1%;
   color: white;
-  border: 2px solid rgb(100,100,100);
+  background-color: red;
+  box-shadow: 0px 0px 60px rgb(255, 0, 0);
+  position: absolute;
 }
 
+#enviado{
+  padding-left: 10px;
+  position: absolute;
+  font-weight: bold;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 250px;
+  color: white;
+  background-color: rgb(49, 134, 0);
+  box-shadow: 0px 0px 60px rgb(49, 134, 0);
+}
+
+h1{
+  color: rgb(255, 255, 255);
+}
+
+.estiloModal{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+#dataNascimento{
+  height: 43px;
+}
 #modal {
   width: 100%;
   height: 100%;
   position: absolute;
-  background-color: rgba(200, 200, 200, 0.2);
-  animation: aparece 3s linear;
+  background-color: rgba(50, 50, 50, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 #modal_dentro{
-  width: 40%;
-  height: 40%;
-  background-color: rgba(100, 100, 100, 0.4);
-  border-radius: 5px;
+  animation: aparece 1s linear;
+  width: 30%;
+  height: 60%;
+  background-color: rgba(200, 200, 200);
   display: flex;
   justify-content: center;
   padding: 5px;
+  box-shadow: 0px 0px 60px rgb(146, 146, 146);
 }
 
 @keyframes aparece {
     0%{
-      top:-100%;
+      transform: translateY(-150%);
     }
     100%{
-      top:0
+      transform: translateY(0);
     }
 }
-
 </style>
 <body>
 </body>
