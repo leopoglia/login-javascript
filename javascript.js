@@ -7,34 +7,72 @@ let botaoDENTRO = document.createElement('div');
 let estilomodal = document.createElement('div');
 let erro = document.createElement('div');
 let enviado = document.createElement('div');
-
+let h1 = document.createElement('h1');
+let estilo = document.createElement('div');
+let inputNome = document.createElement('input');
+let inputSenha = document.createElement('input');
+let inputData = document.createElement('input');
+let cadastroBotao = document.createElement('button');
+let fecharBotao = document.createElement('button');
+let tabela = document.createElement('table');
+tabela.id = 'corpo';
+let tr = document.createElement('tr');
+let tdnome = document.createElement('td');
+let tdsobrenome = document.createElement('td');
+let tddata = document.createElement('td');
 
 let info = [];
-
-modal.id = 'modal';
-erro.id = 'erro'
-enviado.id = 'enviado'
-erro.innerHTML = "ESTA FALTANDO ALGO!"
-enviado.innerHTML = "CADASTRADO COM SUCESSO"
-modaldentro.id = 'modal_dentro';
-botaoDENTRO.id = 'divBOTAOFECHAR';
-body.appendChild(botao);
 botao.onclick = abrir
-botao.innerHTML = "Abrir"
+modal.id = 'modal';
+modaldentro.id = 'modal_dentro';
+h1.appendChild(estilo);
+h1.id = 'titulomodal';
+h1.innerHTML = 'CADASTRE-SE'
+estilomodal.appendChild(h1);
 
+estilomodal.className = 'estiloModal';
 modaldentro.appendChild(estilomodal);
+
+
+inputNome.id = 'nome';
+inputNome.placeholder = "Digite seu nome";
+estilomodal.appendChild(inputNome);
+
+inputSenha.id = 'sobrenome';
+inputSenha.placeholder = "Digite seu sobrenome";
+estilomodal.appendChild(inputSenha);
+
+inputData.id = 'dataNascimento';
+inputData.type = 'date';
+estilomodal.appendChild(inputData);
+
+cadastroBotao.id = 'cadastro';
+cadastroBotao.onclick = cadastro;
+cadastroBotao.innerHTML = 'Cadastrar';
+estilomodal.appendChild(cadastroBotao);
+
+fecharBotao.id = 'botaoFechar';
+fecharBotao.onclick = fechar;
+fecharBotao.innerHTML = 'Fechar';
+estilomodal.appendChild(fecharBotao);
+
+erro.id = 'erro'
+erro.innerHTML = "ESTA FALTANDO ALGO!"
+enviado.id = 'enviado'
+enviado.innerHTML = "CADASTRADO COM SUCESSO"
+body.appendChild(botao);
+botao.innerHTML = "Abrir"
 modal.appendChild(modaldentro)
 modaldentro.appendChild(botaoDENTRO);
-estilomodal.innerHTML = estilomodal.innerHTML + "<h1 id='titulomodal'> CADASTRE-SE </h1><p><div class='estiloModal'><input id='nome' type='text' placeholder='Digite seu nome'></input>  <input id='sobrenome' type='text' placeholder='Digite seu sobrenome'></input><input id='dataNascimento' type='date' placeholder='Digite sua data De nascimento'> <button id='cadastro' onclick=cadastro() >Cadastrar</button><button id='botaoFechar' onclick=fechar() >Fechar</button></div>";
 
 function abrir(){
 body.appendChild(modal);
 }
 
 function cadastro(){
-    var nome1 = document.getElementById('nome').value;
-    var sobrenome1 = document.getElementById('sobrenome').value;
-    var data = document.getElementById('dataNascimento').value;
+    let nome1 = document.getElementById('nome').value;
+    let sobrenome1 = document.getElementById('sobrenome').value;
+    let data = document.getElementById('dataNascimento').value;
 
 
     if ((!sobrenome1 || sobrenome1 == '') || (!nome1 || nome1 == '') || (!data || data == '')) {
@@ -47,28 +85,50 @@ function cadastro(){
 
         estilomodal.appendChild(enviado);
 
+        
         let retornar = {
-            nome : nome,
-            sobrenome : sobrenome, 
+            nome : nome1,
+            sobrenome : sobrenome1, 
             data : data
         }
-        
+        info.push(retornar);    
 
         setTimeout(function(){
-            onclick=fechar();
-            },1000);
+            estilomodal.removeChild(enviado);
+        },1000)
 
-        setTimeout(function(){ 
-            nome.value = ' ';
-            sobrenome.value = ' ';
-            dataNascimento.value = ' ';
-            }, 950);
+        setTimeout(function(){
+            fechar();
+        },500);
 
-        info.push(retornar);    
-    }
-    
+        setTimeout(function(){
+            nome.value = '';
+            sobrenome.value = '';
+            dataNascimento.value = '';
+        },200)    
+
+        tabelona();
+    } 
 }
 
 function fechar(){
-body.removeChild(modal);
+    nome.value = '';
+    sobrenome.value = '';
+    dataNascimento.value = '';
+    body.removeChild(modal);
+    estilomodal.removeChild(erro);
+}
+
+function tabelona(){
+
+    tdnome.textContent = nome.value;
+    tdsobrenome.textContent = sobrenome.value;
+    tddata.textContent = dataNascimento.value;
+    
+    tr.appendChild(tdnome);
+    tr.appendChild(tdsobrenome);
+    tr.appendChild(tddata);
+    body.appendChild(tr);
+    tabela.appendChild(tr);
+    body.appendChild(tabela);
 }
